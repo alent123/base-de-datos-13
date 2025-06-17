@@ -1,91 +1,86 @@
 /*
-📒 README – API Agenda de Contactos
+README – API: Agenda de Contactos
 
-📘 Agenda de Contactos – API REST con Node.js, Express y MongoDB
+Descripción general:
+Este proyecto es una API REST desarrollada con Node.js, Express y MongoDB que permite gestionar una agenda de contactos personales. 
+Incluye una interfaz HTML simple accesible desde el navegador para facilitar el registro, visualización, búsqueda, edición y eliminación de contactos.
 
-Este proyecto es una API CRUD para gestionar una agenda de contactos personales.
-Incluye una interfaz HTML visual y una API con filtros, búsqueda y validaciones.
-
-🚀 Tecnologías utilizadas:
+Tecnologías utilizadas:
 - Node.js
 - Express.js
-- MongoDB con Mongoose
-- HTML + CSS + JS (para la vista en /contactos)
-- dotenv, validator
+- MongoDB + Mongoose
+- HTML, CSS y JavaScript (vanilla)
+- dotenv
+- validator
 
-📦 Instalación:
-1. Clona este repositorio
-2. Instala dependencias:
-   npm install
+Instalación:
+1. Clonar el repositorio.
+2. Ejecutar el comando: npm install
+3. Crear un archivo .env con el siguiente contenido:
 
-3. Configura tu archivo .env:
    PORT=3000
    MONGO_URI=mongodb://localhost:27017/agenda_contactos
 
-4. Inicia el servidor:
+4. Iniciar el servidor con el comando:
    npm run dev
 
-📂 Rutas principales:
+Rutas API:
 
-🔵 1. Crear nuevo contacto
-POST /api/contactos
+1. Crear un nuevo contacto
+   Método: POST
+   URL: /api/contactos
+   Cuerpo (JSON):
+   {
+     "nombre": "Ana Torres",
+     "telefono": "555123456",
+     "email": "ana@mail.com",
+     "direccion": "Av. Siempre Viva 123",
+     "fechaNacimiento": "1992-03-10"
+   }
+   Validaciones:
+   - nombre y teléfono son obligatorios
+   - el teléfono debe ser único
+   - si se proporciona email, debe tener formato válido y ser único
 
-Body JSON:
-{
-  "nombre": "Ana Torres",
-  "telefono": "555123456",
-  "email": "ana@mail.com",
-  "direccion": "Av. Siempre Viva 123",
-  "fechaNacimiento": "1992-03-10"
-}
+2. Obtener todos los contactos
+   Método: GET
+   URL: /api/contactos
+   Parámetro opcional de búsqueda:
+   /api/contactos?search=ana
+   La búsqueda se realiza sobre los campos nombre y email.
+   Los resultados se ordenan alfabéticamente por nombre.
 
-Validaciones:
-- nombre y telefono son obligatorios
-- telefono y email deben ser únicos
-- email debe tener formato válido si se proporciona
+3. Obtener un contacto por ID
+   Método: GET
+   URL: /api/contactos/:id
 
-🟢 2. Obtener todos los contactos
-GET /api/contactos
+4. Actualizar un contacto existente
+   Método: PUT
+   URL: /api/contactos/:id
+   Cuerpo igual al del POST.
 
-Filtros:
-- /api/contactos?search=ana
-- /api/contactos?search=gmail
+5. Eliminar un contacto
+   Método: DELETE
+   URL: /api/contactos/:id
 
-Orden: por nombre (ascendente)
-
-🟡 3. Obtener un contacto por ID
-GET /api/contactos/:id
-
-Ejemplo:
-GET /api/contactos/665fbdab9d5be7383fbf75c1
-
-🟠 4. Actualizar un contacto
-PUT /api/contactos/:id
-
-Body JSON: igual que en POST
-
-🔴 5. Eliminar un contacto
-DELETE /api/contactos/:id
-
-💻 Interfaz HTML
-GET /contactos
-
-Permite:
-- Crear y editar contactos
+Interfaz Web:
+Disponible en la ruta: /contactos
+Desde esta página se puede:
+- Registrar un nuevo contacto
 - Buscar por nombre o email
-- Ver contactos en tabla
-- Eliminar contactos con botón
+- Ver los contactos en una tabla
+- Editar o eliminar contactos desde botones
 
-✅ Modelo MongoDB:
+Estructura del modelo de datos:
 {
   nombre: String (requerido),
   telefono: String (requerido, único),
-  email: String (opcional, único y válido),
+  email: String (opcional, único, con formato válido),
   direccion: String (opcional),
   fechaNacimiento: Date (opcional)
 }
 
-🧪 Ejemplo de contacto válido:
+Ejemplo de contacto válido:
 {
   "nombre": "Carlos Sánchez",
   "telefono": "987654321",
@@ -94,12 +89,7 @@ Permite:
   "fechaNacimiento": "1990-01-15"
 }
 
-🔐 Validaciones clave:
-- telefono: requerido y único
-- email: único y formato válido
-- nombre: obligatorio
-
-✏️ Autor:
-Proyecto para prácticas de Base de Datos Avanzadas – 2025-1
-3° C24
+Notas adicionales:
+- El proyecto ha sido desarrollado como parte de las prácticas de la asignatura de Base de Datos Avanzadas, ciclo 2025-1.
+- Se recomienda usar MongoDB Compass o el navegador para verificar que los contactos han sido registrados correctamente.
 */
