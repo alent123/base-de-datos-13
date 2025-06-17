@@ -3,15 +3,20 @@ README – API: Agenda de Contactos
 
 Descripción general:
 Este proyecto es una API REST desarrollada con Node.js, Express y MongoDB que permite gestionar una agenda de contactos personales. 
-Incluye una interfaz HTML simple accesible desde el navegador para facilitar el registro, visualización, búsqueda, edición y eliminación de contactos.
+Incluye:
+Registro de Contactos
+Nombre:
+Teléfono (único):
+Email (opcional):
+Dirección:
+Fecha de nacimiento:
+Buscar en Agenda
+y la tabla de los user 
 
 Tecnologías utilizadas:
 - Node.js
 - Express.js
 - MongoDB + Mongoose
-- HTML, CSS y JavaScript (vanilla)
-- dotenv
-- validator
 
 Instalación:
 1. Clonar el repositorio.
